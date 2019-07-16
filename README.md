@@ -1,4 +1,4 @@
 # USACO
 A collection of implementations of solutions to USACO problems
 
-Under construction
+Currently under construction, please check back later.
