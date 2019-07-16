@@ -14,18 +14,14 @@ int main() {
 		p[i + 1] = c + p[i];
 	}
 
-	for (int i = 0; i < (1 << K); i++) {
-		if (DP[i] < N) {
-			for (int j = 0; j < K; j++) {
-				if ((i & 1 << j) == 0) {
-					int l = DP[i], h = N;
-					while (l + 1 < h) {
-						int m = (l + h) / 2;
-						sum(DP[i], m) > v[j] ? h = m : l = m;
-					}
-					DP[i ^ 1 << j] = max(l + 1, DP[i ^ 1 << j]);
-				}
+	for (int i = 0; i < (1 << K); i++) if (DP[i] < N) {
+		for (int j = 0; j < K; j++) if ((i & 1 << j) == 0) {
+			int l = DP[i], h = N;
+			while (l + 1 < h) {
+				int m = (l + h) / 2;
+				sum(DP[i], m) > v[j] ? h = m : l = m;
 			}
+			DP[i ^ 1 << j] = max(l + 1, DP[i ^ 1 << j]);
 		}
 	}
 
