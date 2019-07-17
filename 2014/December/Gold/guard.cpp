@@ -7,8 +7,7 @@ int h[1 << 20], DP[1 << 20] = { (int)1e9 };
 struct cow { int h, w, s; } C[20];
 
 int main() {
-	int N, H;
-	cin >> N >> H;
+	int N, H; cin >> N >> H;
 	for (int i = 0; i < N; i++) cin >> C[i].h >> C[i].w >> C[i].s;
 
 	for (int i = 0; i < (1 << N); i++) {
