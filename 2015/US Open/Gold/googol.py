@@ -6,10 +6,7 @@ def solve(u, d):
 	if d == -1:
 		d = 2 * solve(a, -1) + 1
 	d = d - 1
-	if d % 2 == 0:
-		return (d >> 1) + solve(b, (d >> 1)) + 1
-	else:
-		return (d >> 1) + solve(a, (d >> 1) + 1) + 1
+	return (d >> 1) + solve(a if d % 2 == 1 else b, (d >> 1) + (d % 2)) + 1
 
 ans = solve(1, -1);
 print("Answer", ans);
