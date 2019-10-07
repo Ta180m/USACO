@@ -38,15 +38,13 @@ void mult(matrix& A, matrix& B) { // B = A * B;
 	matrix res(d + 1, vi(d + 1, 0));
 	for (int i = 0; i <= d; i++) {
 		for (int j = 0; j <= d; j++) {
-			for (int k = 0; k <= d; k++) {
-				res[i][j] = ((ll)A[i][k] * (ll)B[k][j] + res[i][j]) % MOD;
-			}
+			for (int k = 0; k <= d; k++) res[i][j] = ((ll)A[i][k] * (ll)B[k][j] + res[i][j]) % MOD;
 		}
 	}
 	B = res;
 }
 
-void pow(matrix& A, int n) { // A ^ n
+void pow(matrix& A, int n) { // A = A ^ n
 	matrix res(d + 1, vi(d + 1, 0));
 	for (int i = 0; i <= d; i++) res[i][i] = 1;
 	while (n) {
@@ -62,13 +60,11 @@ int main() {
 
 	str input;
 	while (getline(cin, input)) program.push_back(input);
-
 	for (auto& line : program) { // Record variables
 		stringstream ss(line);
 		str n; ss >> n;
 		if (islower(n[0]) && var.find(n) == var.end()) var[n] = d++;
 	}
-
 	mat_st.push_back({});
 	mat_st.back().resize(d + 1, vi(d + 1, 0));
 	for (int i = 0; i <= d; i++) mat_st.back()[i][i] = 1;
