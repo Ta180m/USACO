@@ -101,13 +101,13 @@ int main() {
 			int x, c;
 			cin >> x >> c;
 			int l = L[x], r = R[x];
-			auto it = --S[c].lower_bound(ii(L[x], L[x]));
+			auto it = --S[c].lower_bound(ii(L[x], L[x])); // Get leftmost interval
 			while (it != S[c].lower_bound(ii(R[x] + 1, R[x] + 1))) {
-				update(max(it->s + 1, L[x]), min(next(it) != S[c].end() ? next(it)->f - 1 : N, R[x]), 1);
-				if (it->s >= L[x] - 1) { // if intervals touch update l and r
+				update(max(it->s + 1, L[x]), min(next(it) != S[c].end() ? next(it)->f - 1 : N, R[x]), 1); // Update range between intervals
+				if (it->s >= L[x] - 1) {
 					l = min(it->f, l);
 					r = max(it->s, r);
-					it = S[c].erase(it);
+					it = S[c].erase(it); // Remove covered intervals
 				}
 				else it++;
 			}
@@ -116,7 +116,7 @@ int main() {
 				r = max(it->s, r);
 				S[c].erase(it);
 			}
-			S[c].emplace(l, r);
+			S[c].emplace(l, r); // Add interval
 		}
 		else {
 			int x;
