@@ -37,7 +37,6 @@ constexpr auto INF = (int)1e9;
 constexpr auto LINF = (ll)1e18;
 
 vi A, B;
-ll DP[2][1000005];
 priority_queue<ll> p1, p2;
 
 int main() {
