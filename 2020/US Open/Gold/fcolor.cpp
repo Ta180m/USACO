@@ -30,7 +30,7 @@ int main() {
 		G[b].push_back(a), H[a].push_back(b);
 	}
 	for (int u = 1; u <= N; ++u) dfs(u);
-	for (int u = 1; u <= N; ++u) dfs(u);
+	vis.reset();
 	for (int u = 1; u <= N; ++u) dfs(u);
 	cnt = 0;
 	for (int u = 1; u <= N; ++u) if (!ans[c[u]]) ans[c[u]] = ++cnt;
